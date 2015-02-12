@@ -40,12 +40,14 @@
             this.button_Log.TabIndex = 0;
             this.button_Log.Text = "Log";
             this.button_Log.UseVisualStyleBackColor = true;
+            this.button_Log.Click += new System.EventHandler(this.button_Log_Click);
             // 
             // textBox_Log
             // 
             this.textBox_Log.Location = new System.Drawing.Point(12, 41);
             this.textBox_Log.Multiline = true;
             this.textBox_Log.Name = "textBox_Log";
+            this.textBox_Log.ReadOnly = true;
             this.textBox_Log.Size = new System.Drawing.Size(260, 208);
             this.textBox_Log.TabIndex = 1;
             // 
