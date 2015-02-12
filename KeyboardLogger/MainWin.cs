@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
@@ -16,7 +17,7 @@ namespace KeyboardLogger
     {
         // data
         IntPtr hHook = IntPtr.Zero;
-        HookProc kydbHookProc;
+        LowLevelKeyboardProc kydbHookProc;
 
 
         // constructor
@@ -35,20 +36,22 @@ namespace KeyboardLogger
                 button_Log.Text = "Log";
                 return;
             }
-            kydbHookProc = new HookProc(KbdHook);
-            hHook = User32.SetWindowsHookEx(HookType.WH_KEYBOARD, kydbHookProc, IntPtr.Zero, Kernel32.GetCurrentThreadId());
+            kydbHookProc = new LowLevelKeyboardProc(KbdHook);
+            ProcessModule module = Process.GetCurrentProcess().MainModule;
+            IntPtr hMod = Kernel32.GetModuleHandle(module.ModuleName);
+            hHook = User32.SetWindowsHookEx(HookType.WH_KEYBOARD_LL, kydbHookProc, hMod, 0);
             button_Log.Text = "Stop Log";
             textBox_Log.Text = "";
         }
 
 
         // keyboard hook procedure
-        IntPtr KbdHook(int code, IntPtr wParam, IntPtr lParam)
+        IntPtr KbdHook(int code, WM wParam, [In]KBDLLHOOKSTRUCT lParam)
         {
             if (code >= 0)
             {
-                Keys key = (Keys)(wParam).ToInt32();
-                textBox_Log.Text = textBox_Log.Text + key;
+                Keys key = (Keys)lParam.vkCode;
+                textBox_Log.Text = textBox_Log.Text + key + " ";
             }
             return User32.CallNextHookEx(IntPtr.Zero, code, wParam, lParam);
         }
