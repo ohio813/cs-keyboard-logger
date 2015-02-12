@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KeyLog\Http.cs" />
     <Compile Include="KeyLog\Log.cs" />
     <Compile Include="MainWin.cs">
       <SubType>Form</SubType>
