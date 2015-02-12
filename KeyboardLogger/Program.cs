@@ -14,6 +14,7 @@ namespace KeyboardLogger
         [STAThread]
         static void Main()
         {
+            // time to make things invisible
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainWin());
