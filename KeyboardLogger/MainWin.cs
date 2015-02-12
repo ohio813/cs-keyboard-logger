@@ -17,7 +17,6 @@ namespace KeyboardLogger
         public MainWin()
         {
             InitializeComponent();
-            IntPtr p = IntPtr.Zero;
         }
     }
 }
