@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using KeyboardLogger.WindowsApi;
 
 namespace KeyboardLogger
 {
@@ -15,6 +17,7 @@ namespace KeyboardLogger
         public MainWin()
         {
             InitializeComponent();
+            IntPtr p = IntPtr.Zero;
         }
     }
 }
