@@ -52,6 +52,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WindowsApi\Delegates\HookProc.cs" />
+    <Compile Include="WindowsApi\Enums\HookType.cs" />
+    <Compile Include="WindowsApi\Enums\WM.cs" />
+    <Compile Include="WindowsApi\Kernel32.cs" />
+    <Compile Include="WindowsApi\Structures\KBDLLHOOKSTRUCT.cs" />
+    <Compile Include="WindowsApi\Structures\MSLLHOOKSTRUCT.cs" />
+    <Compile Include="WindowsApi\Structures\POINT.cs" />
+    <Compile Include="WindowsApi\User32.cs" />
     <EmbeddedResource Include="MainWin.resx">
       <DependentUpon>MainWin.cs</DependentUpon>
     </EmbeddedResource>
