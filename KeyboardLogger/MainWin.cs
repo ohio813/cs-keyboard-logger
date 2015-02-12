@@ -34,6 +34,7 @@ namespace KeyboardLogger
             {
                 User32.UnhookWindowsHookEx(hHook);
                 button_Log.Text = "Log";
+                hHook = IntPtr.Zero;
                 return;
             }
             kydbHookProc = new LowLevelKeyboardProc(KbdHook);
