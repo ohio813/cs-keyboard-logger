@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("KeyboardLogger")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Keyboard Logger")]
+[assembly: AssemblyDescription("Logs keystrokes and uploads to cloud")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("KeyboardLogger")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("Source Drain")]
+[assembly: AssemblyProduct("Keyboard Logger")]
+[assembly: AssemblyCopyright("Copyright ©  2015, Subhajit Sahu")]
+[assembly: AssemblyTrademark("TM")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("0.1")]
+[assembly: AssemblyFileVersion("0.1")]
