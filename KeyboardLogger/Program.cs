@@ -13,12 +13,12 @@ namespace KeyboardLogger
         [STAThread]
         static void Main()
         {
-            KbdHook.Init();
-            Application.Run();
+            // KbdHook.Init();
+            // Application.Run();
             // time to make things invisible
-            // Application.EnableVisualStyles();
-            // Application.SetCompatibleTextRenderingDefault(false);
-            // Application.Run(new MainWin());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new MainWin());
         }
 
 

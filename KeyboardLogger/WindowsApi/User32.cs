@@ -24,5 +24,7 @@ namespace KeyboardLogger.WindowsApi
         [DllImport("user32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool UnhookWindowsHookEx(IntPtr hhk);
+        [DllImport("user32.dll")]
+        public static extern uint MapVirtualKey(uint uCode, MapVK uMapType);
     }
 }

