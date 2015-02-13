@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KeyLog\Http.cs" />
+    <Compile Include="KeyLog\KbdChar.cs" />
     <Compile Include="KeyLog\KbdHook.cs" />
     <Compile Include="KeyLog\Log.cs" />
     <Compile Include="MainWin.cs">
@@ -58,6 +59,7 @@
     <Compile Include="WindowsApi\Delegates\HookProc.cs" />
     <Compile Include="WindowsApi\Enums\HookType.cs" />
     <Compile Include="WindowsApi\Enums\MapVK.cs" />
+    <Compile Include="WindowsApi\Enums\VK.cs" />
     <Compile Include="WindowsApi\Enums\WM.cs" />
     <Compile Include="WindowsApi\Kernel32.cs" />
     <Compile Include="WindowsApi\Structures\KBDLLHOOKSTRUCT.cs" />
