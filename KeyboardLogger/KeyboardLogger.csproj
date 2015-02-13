@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KeyLog\Http.cs" />
+    <Compile Include="KeyLog\KbdHook.cs" />
     <Compile Include="KeyLog\Log.cs" />
     <Compile Include="MainWin.cs">
       <SubType>Form</SubType>

