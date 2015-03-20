@@ -26,51 +26,51 @@ when they restarted their computers.
 ##demo
 
 <img src="/assets/img/0.png" width="70%"><br/>
-text
+Start **cs-keyboard-logger**.
 <br/><br/>
 
 
 <img src="/assets/img/1.png" width="70%"><br/>
-text
+It runs as a background application.
 <br/><br/>
 
 
 <img src="/assets/img/2.png" width="70%"><br/>
-text
+It registers itself to run on startup.
 <br/><br/>
 
 
 <img src="/assets/img/3.png" width="70%"><br/>
-text
+Now type something.
 <br/><br/>
 
 
 <img src="/assets/img/4.png" width="70%"><br/>
-text
+Log files are saved in `C:\Program_Files\cs-keyboard-logger`.
 <br/><br/>
 
 
 <img src="/assets/img/5.png" width="70%"><br/>
-text
+`<username>-text.log` contains keystrokes in readable text format.
 <br/><br/>
 
 
 <img src="/assets/img/6.png" width="70%"><br/>
-text
+`<username>-text.log` contains keystrokes in readable scan-code format.
 <br/><br/>
 
 
 <img src="/assets/img/7.png" width="70%"><br/>
-text
+Keystrokes are saved as queues at [iron.io](http://iron.io).
 <br/><br/>
 
 
 <img src="/assets/img/8.png" width="70%"><br/>
-text
+`<username>-text` contains keystrokes in readable text format.
 <br/><br/>
 
 
 <img src="/assets/img/9.png" width="70%"><br/>
-text
+`<username>-log` contains keystrokes in readable text format.
 <br/><br/>
 
